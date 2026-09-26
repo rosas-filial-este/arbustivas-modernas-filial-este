@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Diapositivas — Arbustivas Modernas</title>
+<meta name="description" content="Las 134 diapositivas originales de la presentación de Arbustivas Modernas, en el orden en que se mostraron.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="envoltorio-ancho">
+    <nav class="migas"><a href="index.html">Arbustivas Modernas</a> / Diapositivas</nav>
+    <p class="eyebrow">Documento 2 de 3</p>
+    <h1>Las <em>diapositivas</em></h1>
+    <p class="bajada">Las 134 diapositivas originales de la presentación de Estela, en el mismo
+    orden en que se mostraron durante la charla. Tocá una miniatura para verla grande; con las
+    flechas del teclado podés pasar de una a otra, y con Escape se cierra.</p>
+  </div>
+</header>
+
+<main class="envoltorio-ancho">
+  <div id="grilla" class="grid-slides" aria-label="Miniaturas de las diapositivas"></div>
+  <p style="text-align:center;margin:2rem 0"><a class="volver" href="index.html">← Volver al índice</a></p>
+</main>
+
+<footer class="pie">
+  <div class="envoltorio-ancho">
+    <p>Diapositivas exportadas del archivo original de la presentación. Ver también
+    <a href="clase.html">la clase</a> y la <a href="galeria.html">galería de variedades</a>.</p>
+  </div>
+</footer>
+
+<div class="visor-fondo" id="visor">
+  <button class="visor-cerrar" id="btnCerrar" aria-label="Cerrar">✕</button>
+  <button class="visor-flecha izq" id="btnAnterior" aria-label="Diapositiva anterior">‹</button>
+  <img id="imgGrande" src="" alt="">
+  <button class="visor-flecha der" id="btnSiguiente" aria-label="Diapositiva siguiente">›</button>
+  <p class="visor-pie" id="piePagina"></p>
+</div>
+
+<script>
+(function(){
+  var TOTAL = 134;
+  var grilla = document.getElementById('grilla');
+  var visor = document.getElementById('visor');
+  var imgGrande = document.getElementById('imgGrande');
+  var piePagina = document.getElementById('piePagina');
+  var actual = 0;
+
+  function num(n){ return String(n).padStart(3,'0'); }
+
+  for (var i=1;i<=TOTAL;i++){
+    var div = document.createElement('button');
+    div.className = 'mini-slide';
+    div.setAttribute('type','button');
+    div.setAttribute('aria-label','Abrir diapositiva ' + i);
+    div.innerHTML = '<img loading="lazy" src="assets/slides/thumb/slide-' + num(i) + '.jpg" alt="Diapositiva ' + i + '"><span class="n">' + i + '</span>';
+    (function(idx){
+      div.addEventListener('click', function(){ abrir(idx); });
+    })(i);
+    grilla.appendChild(div);
+  }
+
+  function abrir(n){
+    actual = n;
+    imgGrande.src = 'assets/slides/full/slide-' + num(actual) + '.jpg';
+    imgGrande.alt = 'Diapositiva ' + actual;
+    piePagina.textContent = 'Diapositiva ' + actual + ' / ' + TOTAL;
+    visor.classList.add('activo');
+  }
+  function cerrar(){ visor.classList.remove('activo'); imgGrande.src=''; }
+  function siguiente(){ abrir(actual < TOTAL ? actual+1 : 1); }
+  function anterior(){ abrir(actual > 1 ? actual-1 : TOTAL); }
+
+  document.getElementById('btnCerrar').addEventListener('click', cerrar);
+  document.getElementById('btnSiguiente').addEventListener('click', siguiente);
+  document.getElementById('btnAnterior').addEventListener('click', anterior);
+  visor.addEventListener('click', function(e){ if (e.target === visor) cerrar(); });
+
+  document.addEventListener('keydown', function(e){
+    if (!visor.classList.contains('activo')) return;
+    if (e.key === 'Escape') cerrar();
+    else if (e.key === 'ArrowRight') siguiente();
+    else if (e.key === 'ArrowLeft') anterior();
+  });
+})();
+</script>
+
+</body>
+</html>
