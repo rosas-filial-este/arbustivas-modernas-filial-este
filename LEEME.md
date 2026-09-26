@@ -1,7 +1,7 @@
 # Arbustivas Modernas — documentación para distribuir
 
-Este es el paquete completo de la conferencia "Arbustivas Modernas", dictada por Estela para la
-Filial Este de la Asociación de Rosas.
+Este es el paquete completo de la conferencia "Arbustivas Modernas", dictada por Stella Ruiz de
+Mondueri para la Filial Este de la Asociación Uruguaya de la Rosa.
 
 ## Cómo abrirlo
 
