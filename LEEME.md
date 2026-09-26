@@ -22,7 +22,7 @@ documentos con los links.
 
 ## Nota
 
-Una foto de la galería ("románticas — Meilland y Cordes") no tenía nombre en el archivo original;
+Una foto de la galería ("románticas — Meilland y Kordes") no tenía nombre en el archivo original;
 se incluyó igual porque ilustra bien la forma descrita en la clase.
 
 El paquete completo pesa unos 70 MB (casi todo son las imágenes). Para enviarlo por WhatsApp o
